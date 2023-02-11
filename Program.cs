@@ -32,6 +32,7 @@ class Waiter : Employee
         set { waiters[i] = value; }
     }
 }
+
 class Program
 {
     static void Main(string[] args)
