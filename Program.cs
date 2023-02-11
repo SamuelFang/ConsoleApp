@@ -1,49 +1,53 @@
-﻿using System;
+using System;
 
 interface Employee
 {
-    string name { get; set; };
-    int salary { get; set; };
-    int hours { get; set; };
+    int Salary { get; set; }
+    int Hours { get; set; }
+    int Pay { get; }
 }
 
-class Waiter: Employee
+class Waiter : Employee
 {
-    public string name;
-    public int salary;
-    public int hours;
-    public string Name
+    private int salary;
+    private int hours;
+    public int Salary
     {
-        get { return name; };
-        set { name = value; };
+        get { return salary; }
+        set { salary = value; }
     }
-    public string Salary
+    public int Hours
     {
-        get { return salary; };
-        set { salary = value; };
+        get { return hours; }
+        set { hours = value; }
     }
-    public string Hours
+    public int Pay
     {
-        get { return hours; };
-        set { hours = value; };
+        get { return hours * salary; }
     }
-
     private string[] waiters = new string[100];
     public string this[int i]
     {
         get { return waiters[i]; }
         set { waiters[i] = value; }
     }
-
 }
-
-namespace MyConsoleApplication
+class Program
 {
-    class Program
+    static void Main(string[] args)
     {
-        static void Main(string[] args)
-        {
-            Waiter John = new Waiter();
-        }
+        Waiter waiter = new Waiter();
+        waiter.Salary = 16;
+        waiter.Hours = 8;
+        waiter[0] = "Beth";
+        waiter[1] = "John";
+        waiter[2] = "Joe";
+
+        Console.WriteLine(waiter.Salary);
+        Console.WriteLine(waiter.Hours);
+        Console.WriteLine(waiter.Pay);
+        Console.WriteLine(waiter[0]);
+        Console.WriteLine(waiter[1]);
+        Console.WriteLine(waiter[2]);
     }
 }
